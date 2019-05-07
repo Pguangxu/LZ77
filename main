@@ -1,0 +1,166 @@
+//#include <iostream>
+#include <stdio.h>
+//using namespace std;
+
+#define WINDOW_SIZE =15
+#define BUFFER_SIZE =15
+
+
+unsigned int16_t longest_match( unsigned char *prt8_data, unsigned int i32_length_in , unsigned int i32_cursor,)
+{
+    unsigned int i32_end_buffer =0;
+    unsigned int i32_start_index = 0;
+
+    unsigned int16_t i16_pos;
+    unsigned int16_t i16_length;
+    unsigned char char_next;
+    unsigned int16_t i16_result=0;
+
+
+
+
+    if (i32_length_in<i32_cursor +BUFFER_SIZE)
+    {
+        i32_end_buffer=i32_length_in;
+    }
+    else
+    {
+        i32_end_buffer=i32_cursor +BUFFER_SIZE;
+    }
+
+    for(unsigned int j =i32_cursor +1; j<i32_end_buffer; j++)//substring
+    {
+
+        if (i32_cursor-WINDOW_SIZE >0)
+        {
+            i32_start_index=i32_cursor-WINDOW_SIZE;
+        }
+        else
+        {
+            i32_start_index=0;
+        }
+        
+        for(unsigned int i =i32_start_index ;i < i32_cursor;i++)//matchstring
+        {
+            repetition = (j-i32_cursor)/(i32_cursor-i);
+            last=(j-i32_cursor)%(i32_cursor-i)
+                p = i32_cursor - i + 1
+                l = len(substring)
+                c = data[j+1]
+
+
+        }
+
+
+
+    }
+
+    # unmatched string between the two
+    if i8_length == 0 and i8_length == 0
+    {
+        return prt8_data[i32_cursor + 1]
+    }
+
+    i16_result=i16_pos)<<12;
+    i16_result|=i16_length)<<8;
+    i16_result|=char_next;
+    return i16_result;
+
+
+
+}
+
+
+void compress(const unsigned char *ptr8_data_in,const unsigned int i32_length_in, unsigned char *ptr8_data_out,unsigned int& i32_length_out )
+{
+    unsigned int16_t *ptr16_result = NULL;
+    ptr16_result = (unsigned int16_t *)malloc(i32_length_in * sizeof(unsigned int16_t));
+    unsigned int i32_cursor=0;
+    unsigned int16_t i16_token;
+    unsigned int i32_length_match;
+    unsigned int i32_cursor_out=0;
+    i32_length_out=0;
+
+    while (i32_cursor < i32_length_in)
+    {
+        i16_token = longest_match(ptr8_data_in, i32_cursor)
+        i32_length_match=0x000f&(i16_token>>8);
+        i32_cursor += ( i32_length_match+1);
+
+        ptr16_result[i32_cursor_out++]=i16_token;
+    }
+    ptr8_data_out=ptr16_result;
+    i32_length_out=i32_cursor_out>>1;
+    return;
+}
+
+
+decompress(self, compressed):
+
+
+        """
+        decompress the compressed message
+        :param compressed: tuples (p, l, c)
+        :return: decompressed message
+        """
+        i32_cursor = -1
+        out = []
+        print('decompress')
+        for (p, l, c) in compressed:
+            print((p,l,c))
+            # the initialization
+            if p == 0 and l == 0:
+                out =np.append(out, c)
+            elif p >= l:
+                out = np.append(out,out[i32_cursor-p+1:i32_cursor-p+1+l] )
+                out = np.append(out,c )
+
+            # the repetition of dictionary
+            elif p < l:
+                repetition =np.floor(l / p)
+                last = l % p
+                while repetition>0:
+                    out=np.append(out,out[i32_cursor-p+1:i32_cursor+1] )
+                    print(repetition)
+                    repetition-=1
+                print(i32_cursor-p+1)
+                print(last)
+                out = np.append(out,out[i32_cursor-p+1:i32_cursor -p+1 +last] )
+                out = np.append(out,c )
+            #print(out)
+            print('\n')
+            i32_cursor += (l + 1)
+
+        return out
+
+int sum(int a , int b)
+{
+    /*
+    int c=a^b;
+    b=a&b;
+    b=b<<1;
+    if(c&b)
+    {
+     return sum(c,b);
+    }
+    else
+    {
+        return c^b;
+    }*/
+    int c =a;
+    do {
+        a=c;
+        c=a^b;
+        b=b&a;
+        b=b<<1;
+
+    }while(c&b);
+    return c^b;
+}
+int main()
+{
+int a=1^2;
+a=sum(-100,100);
+ printf("HELLO World %d",a);
+ return 0;
+}
